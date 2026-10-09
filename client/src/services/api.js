@@ -1,8 +1,8 @@
+
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    "http://localhost:5000/api",
+  baseURL: "https://meditrack-app-rcyv.onrender.com/api",
   withCredentials: true
 });
 
