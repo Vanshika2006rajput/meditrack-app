@@ -7,14 +7,17 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+
+
+
 const getCookieOptions = () => {
-  const isProduction =
-    process.env.NODE_ENV === "production";
+  const isProduction = process.env.NODE_ENV === "production";
+  const isRender = process.env.RENDER === "true";
 
   return {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: "lax",
+    secure: isProduction || isRender,
+    sameSite: isRender ? "none" : "lax",
     path: "/",
     maxAge: 24 * 60 * 60 * 1000
   };
